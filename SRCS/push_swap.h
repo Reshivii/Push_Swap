@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 12:13:38 by aburnott          #+#    #+#             */
-/*   Updated: 2023/01/03 15:02:34 by aburnott         ###   ########.fr       */
+/*   Updated: 2023/01/05 13:38:06 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <stdio.h>
+# include <limits.h>
 
 typedef struct s_node
 {
@@ -30,5 +31,6 @@ typedef struct s_stack
 
 t_stack	*stack_init(void);
 int 	stack_push(t_stack *stack, int value);
-int		ft_atoi(const char *str);
+int		ft_atoi(const char *str, int *check);
+
 #endif
