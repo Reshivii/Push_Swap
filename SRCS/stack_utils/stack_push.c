@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   stack_push.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/27 12:13:38 by aburnott          #+#    #+#             */
-/*   Updated: 2023/01/05 13:38:06 by aburnott         ###   ########.fr       */
+/*   Created: 2023/01/03 14:55:03 by aburnott          #+#    #+#             */
+/*   Updated: 2023/01/06 12:02:04 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../../include/push_swap.h"
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <limits.h>
-
-typedef struct s_node
+int	stack_push(t_stack *stack, int value)
 {
-	int				value;
-	struct s_node	*next;
-}	t_node;
+	t_node	*new;
+	t_node	*temp;
 
-typedef struct s_stack
-{
-	t_node	*head;
-	int		size;
-}	t_stack;
-
-t_stack	*stack_init(void);
-int 	stack_push(t_stack *stack, int value);
-int		ft_atoi(const char *str, int *check);
-
-#endif
+	new = (t_node *)malloc(sizeof(t_node));
+	if (!new)
+		exit(EXIT_FAILURE);
+	new->value = value;
+	new->next = 0;
+	temp = stack->head;
+	if (!temp)
+		stack->head = new;
+	else
+	{
+		while (temp && temp->next)
+			temp = temp->next;
+		temp->next = new;
+	}
+	stack->size++;
+	return (1);
+}

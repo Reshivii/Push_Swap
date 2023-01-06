@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_push.c                                       :+:      :+:    :+:   */
+/*   s_operation.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/03 14:55:03 by aburnott          #+#    #+#             */
-/*   Updated: 2023/01/05 16:36:19 by aburnott         ###   ########.fr       */
+/*   Created: 2023/01/06 09:25:39 by aburnott          #+#    #+#             */
+/*   Updated: 2023/01/06 12:01:00 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../include/push_swap.h"
 
-int stack_push(t_stack *stack, int value)
+void	sa(t_node *head)
 {
-	t_node	*new;
-	t_node	*temp;
+	ft_swap(head);
+	write(1, "sa\n", 3);
+}
 
-	new = (t_node*) malloc(sizeof(t_node));
-	if (!new)
-		return (0);
-	new->value = value;
-	new->next = 0;
-	temp = stack->head;
-	if (!temp)
-		stack->head = new;
-	else
-	{
-		while (temp && temp->next)
-			temp = temp->next;
-		temp->next = new;
-	}
-	stack->size++;
-	return (1);
+void	sb(t_node *head)
+{
+	ft_swap(head);
+	ft_swap(head);
+	write(1, "sb\n", 3);
+}
+
+void	ss(t_node *head_a, t_node *head_b)
+{
+	ft_swap(head_a);
+	ft_swap(head_b);
+	write(1, "ss\n", 3);
 }

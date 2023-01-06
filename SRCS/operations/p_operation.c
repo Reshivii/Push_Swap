@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_stack.c                                       :+:      :+:    :+:   */
+/*   p_operation.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/27 13:45:13 by aburnott          #+#    #+#             */
-/*   Updated: 2023/01/03 15:03:22 by aburnott         ###   ########.fr       */
+/*   Created: 2023/01/06 10:36:46 by aburnott          #+#    #+#             */
+/*   Updated: 2023/01/06 12:00:38 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../include/push_swap.h"
 
-t_stack	*stack_init(void)
+void	pa(t_node **head_a, t_node **head_b)
 {
-	t_stack	*stack;
+	push(head_a, head_b);
+	write(1, "pa\n", 3);
+}
 
-	stack = (t_stack *) malloc(sizeof(t_stack));
-	if (!stack)
-		return (NULL);
-	stack->head = NULL;
-	stack->size = 0;
-	return (stack);
+void	pb(t_node **head_a, t_node **head_b)
+{
+	push(head_b, head_a);
+	write(1, "pb\n", 3);
 }

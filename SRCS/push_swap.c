@@ -6,58 +6,66 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:31:20 by aburnott          #+#    #+#             */
-/*   Updated: 2023/01/05 16:37:00 by aburnott         ###   ########.fr       */
+/*   Updated: 2023/01/06 11:45:18 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 int	check_stack(t_stack *stack_a, int ato)
 {
 	t_node	*current;
-	
+
 	current = stack_a->head;
-	while(current && current->value != ato)
+	while (current && current->value != ato)
 		current = current->next;
 	if (current)
 	{
-		printf("Error\n");
+		write(2, "Error\n", 6);
 		exit(EXIT_FAILURE);
 	}
-	return (0);	
+	return (0);
 }
 
-
-int	main(int ac, char **av)
+void	valid_stack(t_stack *stack_a, char **list, int i)
 {
-	t_stack	*stack_a;
-	int		i;
-	int		check;
+	int	check;
+	int	ato;
 
-	stack_a = stack_init();
-	i = 1;
 	check = 0;
-	while (i < ac)
+	while (list[i])
 	{
-		int ato = ft_atoi(av[i], &check);
+		ato = ft_atoi(list[i], &check);
 		check_stack(stack_a, ato);
 		stack_push(stack_a, ato);
 		if (check)
 		{
-			printf("Error\n");
+			write (2, "Error\n", 6);
 			exit(EXIT_FAILURE);
 		}
 		i++;
 	}
+}
 
-	t_node *current;
+int	main(int ac, char **av)
+{
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	char	**splitted;
+	int		i;
+	int		check;
 
-	current = stack_a->head;
-	while (current)
+	stack_a = stack_init();
+	stack_b = stack_init();
+	i = 1;
+	check = 0;
+	if (ac == 2)
 	{
-	    printf("%d ", current->value);
-	    current = current->next;
+		splitted = ft_split(av[1], ' ');
+		valid_stack(stack_a, splitted, 0);
 	}
-
+	else
+		valid_stack(stack_a, av, 1);
+	// system("leaks push_swap");
 	return (0);
 }
