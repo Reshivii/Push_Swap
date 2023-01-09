@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 12:13:38 by aburnott          #+#    #+#             */
-/*   Updated: 2023/01/06 11:28:00 by aburnott         ###   ########.fr       */
+/*   Updated: 2023/01/09 17:43:23 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ void	rrr(t_node **head_a, t_node **head_b);
 void	sa(t_node *head);
 void	sb(t_node *head);
 void	ss(t_node *head_a, t_node *head_b);
+void	algo(t_stack *stack_a, t_stack *stack_b);
 
 #endif

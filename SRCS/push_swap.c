@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:31:20 by aburnott          #+#    #+#             */
-/*   Updated: 2023/01/06 11:45:18 by aburnott         ###   ########.fr       */
+/*   Updated: 2023/01/09 20:14:00 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,31 @@ void	valid_stack(t_stack *stack_a, char **list, int i)
 	}
 }
 
+void	display(t_stack *stack_a)
+{
+	t_node *current_a;
+
+	current_a = stack_a->head;
+	while (current_a)
+	{
+		printf("|%d| ", current_a->value);
+		current_a = current_a->next;
+	}
+}
+
 int	main(int ac, char **av)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 	char	**splitted;
-	int		i;
-	int		check;
 
+	if (ac == 1)
+	{
+		printf("Error\n");
+		return -1;
+	}
 	stack_a = stack_init();
 	stack_b = stack_init();
-	i = 1;
-	check = 0;
 	if (ac == 2)
 	{
 		splitted = ft_split(av[1], ' ');
@@ -66,6 +79,11 @@ int	main(int ac, char **av)
 	}
 	else
 		valid_stack(stack_a, av, 1);
+	algo(stack_a, stack_b);
 	// system("leaks push_swap");
+	//printf("STACK A:\n");
+	//display(stack_a);
+	//printf("\nSTACK B:\n");
+	//display(stack_b);
 	return (0);
 }
