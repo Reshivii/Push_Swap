@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:31:20 by aburnott          #+#    #+#             */
-/*   Updated: 2023/01/09 20:14:00 by aburnott         ###   ########.fr       */
+/*   Updated: 2023/01/10 13:07:19 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,7 @@ int	main(int ac, char **av)
 	char	**splitted;
 
 	if (ac == 1)
-	{
-		printf("Error\n");
-		return -1;
-	}
+		return 0;
 	stack_a = stack_init();
 	stack_b = stack_init();
 	if (ac == 2)
@@ -79,11 +76,12 @@ int	main(int ac, char **av)
 	}
 	else
 		valid_stack(stack_a, av, 1);
-	algo(stack_a, stack_b);
+	if(!check_sorted(stack_a))
+		algo(stack_a, stack_b);
 	// system("leaks push_swap");
-	//printf("STACK A:\n");
-	//display(stack_a);
-	//printf("\nSTACK B:\n");
-	//display(stack_b);
+	printf("\n\nSTACK A:\n");
+	display(stack_a);
+	printf("\nSTACK B:\n");
+	display(stack_b);
 	return (0);
 }
