@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:55:03 by aburnott          #+#    #+#             */
-/*   Updated: 2023/01/06 12:02:04 by aburnott         ###   ########.fr       */
+/*   Updated: 2023/01/11 13:47:16 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	stack_push(t_stack *stack, int value)
 	new = (t_node *)malloc(sizeof(t_node));
 	if (!new)
 		exit(EXIT_FAILURE);
-	new->value = value;
+	new->o_value = value;
+	new->value = 0;
 	new->next = 0;
 	temp = stack->head;
 	if (!temp)

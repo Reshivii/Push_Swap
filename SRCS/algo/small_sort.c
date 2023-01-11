@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 14:24:41 by aburnott          #+#    #+#             */
-/*   Updated: 2023/01/10 13:23:06 by aburnott         ###   ########.fr       */
+/*   Updated: 2023/01/11 15:14:02 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	check_sorted(t_stack *stack_a)
 		return (1);
 	while (current->next)
 	{
-		if(current->value > current->next->value)
+		if (current->value > current->next->value)
 			return (0);
 		current = current->next;
 	}
@@ -31,8 +31,9 @@ int	check_sorted(t_stack *stack_a)
 void	sort_three(t_stack *stack_a)
 {
 	int	checked;
+
 	checked = check_sorted(stack_a);
-	while(!checked)
+	while (!checked)
 	{
 		checked = check_sorted(stack_a);
 		if (stack_a->head->value > stack_a->head->next->value)
@@ -42,24 +43,21 @@ void	sort_three(t_stack *stack_a)
 	}
 }
 
-void	empty_stack_b(t_stack *stack_a, t_stack *stack_b)
+static void	empty_stack_b(t_stack *stack_a, t_stack *stack_b)
 {
 	while (stack_b->size != 1)
 	{
 		if (stack_b->head->value > stack_b->head->next->value)
-		{
-			pa(&stack_a->head, &stack_b->head);
-			stack_b->size--;
-		}
+			pa(stack_b, &stack_a->head, &stack_b->head);
 		else
 			rrb(&stack_b->head);
 	}
-	pa(&stack_a->head, &stack_b->head);
+	pa(stack_b, &stack_a->head, &stack_b->head);
 }
 
 static int	min_index(t_stack *stack_a)
 {
-	int	i;
+	int		i;
 	t_node	*min;
 	t_node	*tmp;
 
@@ -77,7 +75,7 @@ static int	min_index(t_stack *stack_a)
 
 void	sort_five(t_stack *stack_a, t_stack *stack_b)
 {
-	int	min;
+	int		min;
 	t_node	*tmp;
 
 	while (stack_a->size != 3)
@@ -88,13 +86,11 @@ void	sort_five(t_stack *stack_a, t_stack *stack_b)
 			tmp = tmp->next;
 		if (tmp->value == min)
 			rra(&stack_a->head);
-		while(stack_a->head->value != min)
+		while (stack_a->head->value != min)
 			ra(&stack_a->head);
-		pb(&stack_a->head, &stack_b->head);
+		pb(stack_b, &stack_a->head, &stack_b->head);
 		stack_a->size--;
-		stack_b->size++;
 	}
 	sort_three(stack_a);
 	empty_stack_b(stack_a, stack_b);
-	
 }

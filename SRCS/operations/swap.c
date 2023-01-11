@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 09:55:02 by aburnott          #+#    #+#             */
-/*   Updated: 2023/01/06 12:01:51 by aburnott         ###   ########.fr       */
+/*   Updated: 2023/01/11 14:09:49 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	rotate(t_node **head)
 
 	temp = *head;
 	*head = (*head)->next;
+	if (!*head)
+		return ;
 	list = *head;
 	while (list->next)
 		list = list->next;

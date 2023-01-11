@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 09:25:39 by aburnott          #+#    #+#             */
-/*   Updated: 2023/01/09 19:11:47 by aburnott         ###   ########.fr       */
+/*   Updated: 2023/01/11 14:02:13 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	sa(t_node *head)
 
 void	sb(t_node *head)
 {
-	ft_swap(head);
 	ft_swap(head);
 	write(1, "sb\n", 3);
 }

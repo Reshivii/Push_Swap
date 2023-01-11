@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 12:13:38 by aburnott          #+#    #+#             */
-/*   Updated: 2023/01/10 13:22:59 by aburnott         ###   ########.fr       */
+/*   Updated: 2023/01/11 15:08:49 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 typedef struct s_node
 {
+	int				o_value;
 	int				value;
 	struct s_node	*next;
 }	t_node;
@@ -38,8 +39,8 @@ void	rotate(t_node **head);
 void	reverse_rotate(t_node **head);
 void	push(t_node **head_1, t_node **head_2);
 char	**ft_split(char const *s, char c);
-void	pa(t_node **head_a, t_node **head_b);
-void	pb(t_node **head_a, t_node **head_b);
+void	pa(t_stack *stack, t_node **head_a, t_node **head_b);
+void	pb(t_stack *stack, t_node **head_a, t_node **head_b);
 void	ra(t_node **head);
 void	rb(t_node **head);
 void	rr(t_node **head_a, t_node **head_b);
@@ -50,9 +51,10 @@ void	sa(t_node *head);
 void	sb(t_node *head);
 void	ss(t_node *head_a, t_node *head_b);
 void	algo(t_stack *stack_a, t_stack *stack_b);
-void	display(t_stack *stack_a); //A REtirer
 int		check_sorted(t_stack *stack_a);
 void	sort_five(t_stack *stack_a, t_stack *stack_b);
 void	sort_three(t_stack *stack_a);
+void	ft_free(t_stack *stack_a, t_stack *stack_b);
+void	ft_free_arr(char **arr);
 
 #endif

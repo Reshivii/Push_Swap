@@ -6,13 +6,13 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 10:47:24 by aburnott          #+#    #+#             */
-/*   Updated: 2023/01/06 12:01:19 by aburnott         ###   ########.fr       */
+/*   Updated: 2023/01/11 15:14:48 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-int	ft_count(char const *s, char c)
+static int	ft_count(char const *s, char c)
 {
 	int	i;
 	int	count;
@@ -33,7 +33,7 @@ int	ft_count(char const *s, char c)
 	return (count + 1);
 }
 
-char	*word(int *j_int, char const *s, char c)
+static char	*word(int *j_int, char const *s, char c)
 {
 	int		len;
 	char	*buf;
@@ -58,7 +58,7 @@ char	*word(int *j_int, char const *s, char c)
 	return (buf);
 }
 
-char	**free_all(char **s, int limit)
+static char	**free_all(char **s, int limit)
 {
 	int	index;
 

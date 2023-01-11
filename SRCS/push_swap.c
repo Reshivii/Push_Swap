@@ -6,18 +6,37 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:31:20 by aburnott          #+#    #+#             */
-/*   Updated: 2023/01/10 13:07:19 by aburnott         ###   ########.fr       */
+/*   Updated: 2023/01/11 15:09:05 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	check_stack(t_stack *stack_a, int ato)
+static void	transform(t_stack *stack)
+{
+	t_node	*tmp;
+	t_node	*tmp_bis;
+
+	tmp = stack->head;
+	while (tmp)
+	{
+		tmp_bis = stack->head;
+		while (tmp_bis)
+		{
+			if (tmp_bis->o_value < tmp->o_value)
+				++tmp->value;
+			tmp_bis = tmp_bis->next;
+		}
+		tmp = tmp->next;
+	}
+}
+
+static int	check_stack(t_stack *stack_a, int ato)
 {
 	t_node	*current;
 
 	current = stack_a->head;
-	while (current && current->value != ato)
+	while (current && current->o_value != ato)
 		current = current->next;
 	if (current)
 	{
@@ -27,7 +46,7 @@ int	check_stack(t_stack *stack_a, int ato)
 	return (0);
 }
 
-void	valid_stack(t_stack *stack_a, char **list, int i)
+static void	valid_stack(t_stack *stack_a, char **list, int i)
 {
 	int	check;
 	int	ato;
@@ -45,18 +64,7 @@ void	valid_stack(t_stack *stack_a, char **list, int i)
 		}
 		i++;
 	}
-}
-
-void	display(t_stack *stack_a)
-{
-	t_node *current_a;
-
-	current_a = stack_a->head;
-	while (current_a)
-	{
-		printf("|%d| ", current_a->value);
-		current_a = current_a->next;
-	}
+	transform(stack_a);
 }
 
 int	main(int ac, char **av)
@@ -66,22 +74,21 @@ int	main(int ac, char **av)
 	char	**splitted;
 
 	if (ac == 1)
-		return 0;
+		return (0);
 	stack_a = stack_init();
 	stack_b = stack_init();
 	if (ac == 2)
 	{
 		splitted = ft_split(av[1], ' ');
+		if (!splitted)
+			exit(EXIT_FAILURE);
 		valid_stack(stack_a, splitted, 0);
+		ft_free_arr(splitted);
 	}
 	else
 		valid_stack(stack_a, av, 1);
-	if(!check_sorted(stack_a))
+	if (!check_sorted(stack_a))
 		algo(stack_a, stack_b);
-	// system("leaks push_swap");
-	printf("\n\nSTACK A:\n");
-	display(stack_a);
-	printf("\nSTACK B:\n");
-	display(stack_b);
+	ft_free(stack_a, stack_b);
 	return (0);
 }

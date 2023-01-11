@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:57:41 by aburnott          #+#    #+#             */
-/*   Updated: 2023/01/06 12:01:15 by aburnott         ###   ########.fr       */
+/*   Updated: 2023/01/11 15:08:33 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,32 @@ int	ft_atoi(const char *str, int *check)
 		|| str[i])
 		*check = 1;
 	return (sign * res);
+}
+
+void	ft_free(t_stack *stack_a, t_stack *stack_b)
+{
+	t_node	*value;
+	t_node	*tmp;
+
+	value = stack_a->head;
+	while (value)
+	{
+		tmp = value;
+		value = value->next;
+		free(tmp);
+	}
+	free(stack_a);
+	free(stack_b);
+}
+
+void	ft_free_arr(char **arr)
+{
+	int	index;
+
+	if (!arr)
+		return ;
+	index = 0;
+	while (arr[index])
+		free(arr[index++]);
+	free(arr);
 }
