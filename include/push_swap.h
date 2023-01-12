@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 12:13:38 by aburnott          #+#    #+#             */
-/*   Updated: 2023/01/11 15:18:38 by aburnott         ###   ########.fr       */
+/*   Updated: 2023/01/12 10:31:24 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
-# include <stdio.h>
 # include <limits.h>
 # include <unistd.h>
 

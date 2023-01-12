@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 14:24:41 by aburnott          #+#    #+#             */
-/*   Updated: 2023/01/11 15:39:40 by aburnott         ###   ########.fr       */
+/*   Updated: 2023/01/12 10:33:37 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ void	sort_three(t_stack *stack_a)
 		checked = check_sorted(stack_a);
 		if (stack_a->head->value > stack_a->head->next->value)
 			sa(stack_a->head);
-		if (stack_a->size == 3 && stack_a->head->next->value > stack_a->head->next->next->value)
+		if (stack_a->size == 3
+			&& stack_a->head->next->value > stack_a->head->next->next->value)
 			rra(&stack_a->head);
 	}
 }
@@ -57,11 +58,9 @@ static void	empty_stack_b(t_stack *stack_a, t_stack *stack_b)
 
 static int	min_index(t_stack *stack_a)
 {
-	int		i;
 	t_node	*min;
 	t_node	*tmp;
 
-	i = 0;
 	min = stack_a->head;
 	tmp = stack_a->head->next;
 	while (tmp)
